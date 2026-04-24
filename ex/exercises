@@ -1,0 +1,111 @@
+import numpy as np
+
+# Tạo một mảng từ 10 đến 49
+arr = np.arange(10, 50)
+print("\nMảng từ 10 đến 49:\n", arr)
+print("\nĐảo ngược mảng:\n", arr[::-1])
+
+# Tạo một ma trận 3x3
+matrix = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print("\nMa trận gốc:\n", matrix)
+
+# Tạo một ma trận 3x3 bằng cách sử dụng np.arange và reshape
+autoMatrix = np.arange(1, 10).reshape(3, 3)
+print("Ma trận đơn vị 3x3:\n", autoMatrix)
+
+# Tạo một mảng 3x3 với các giá trị ngẫu nhiên từ 0 đến 99
+arrtest = np.array([1,2,0,0,4,0])
+print("\nMảng gốc:\n", arrtest)
+print("\nPhần tử khác 0:\n", arrtest.nonzero()[0])
+
+# Tạo một ma trận đơn vị 3x3
+identityMatrix = np.eye(3)
+print("\nMa trận đơn vị 3x3:\n", identityMatrix)
+
+# Tạo một ma trận ngẫu nhiên 3x3 với các giá trị từ 0 đến 99
+randomMatrix = np.random.randint(0, 100, (3, 3, 3))
+print("\nMa trận ngẫu nhiên 3x3:\n", randomMatrix)
+
+# Tạo một ma trận ngẫu nhiên 10x10 với các giá trị từ 0 đến 99
+randomMatrix2 = np.random.randint(0, 100, (10, 10))
+print("\nMa trận ngẫu nhiên 10x10:\n", randomMatrix2)
+print("\nmax của ma trận 10x10:\n", randomMatrix2.max())
+print("\nmin của ma trận 10x10:\n", randomMatrix2.min())    
+
+# Tạo một vector ngẫu nhiên 30 phần tử với các giá trị từ 0 đến 99
+meanVector = np.random.randint(0, 100, 30)
+print("\nVector ngẫu nhiên 30 phần tử:\n", meanVector)
+print("\nTrung bình của vector:\n", meanVector.mean())
+
+# Tạo một ma trận 5x5 với viền là 1 và phần còn lại là 0
+arr2 = np.zeros((5, 5), dtype=int)
+arr2[0, :] = 1    # top row
+arr2[-1, :] = 1   # bottom row
+arr2[:, 0] = 1    # left column
+arr2[:, -1] = 1   # right column
+print("\n   Ma trận với viền 1:\n", arr2)
+
+# Tạo một ma trận 3x3 và thêm một viền 0 xung quanh nó
+a = np.array([[1, 2, 3],
+              [4, 5, 6],
+              [7, 8, 9]])
+b = np.pad(a, pad_width=1, mode='constant', constant_values=0)
+print(b , "\n")
+
+# Các phép toán với NaN và Inf
+print(0 * np.nan)
+print(np.nan == np.nan)
+print(np.inf > np.nan)
+print(np.nan - np.nan)
+print(0.3 == 3 * 0.1)
+
+# Tạo một ma trận 5x5 với các giá trị 1, 2, 3, 4 trên dưới chéo phụ
+arr3 = np.zeros((5, 5), dtype=int)
+arr3[1, 0] = 1
+arr3[2, 1] = 2
+arr3[3, 2] = 3
+arr3[4, 3] = 4
+print("\nCách 1:\n", arr3)
+
+arr31 = np.zeros((5, 5), dtype=int)
+for i, val in enumerate([1, 2, 3, 4]):
+    arr31[i+1, i] = val
+print("\nCách 2:\n", arr31)
+
+# Tạo một ma trận 8x8 với các ô đen và trắng (1 và 0) xen kẽ (bàn cờ)
+checkerboard = np.zeros((8, 8), dtype=int)
+checkerboard[1::2, ::2] = 1
+checkerboard[::2, 1::2] = 1
+print("\nBàn cờ 8x8:\n", checkerboard)
+
+# Tạo một ma trận 8x8 với các ô đen và trắng (1 và 0) xen kẽ (bàn cờ) sử dụng np.tile
+checkerboard2 = np.tile(([0,1], [1,0]), (4, 4))
+print("\nBàn cờ 8x8 (sử dụng np.tile):\n", checkerboard2)
+
+# Tạo một ma trận ngẫu nhiên 5x5 và chuẩn hóa nó về khoảng [0, 1]
+ranMatrix = np.random.rand(5, 5)
+print("\nMa trận ngẫu nhiên 5x5:\n", ranMatrix)
+ranMatrix_norm = (ranMatrix - ranMatrix.min()) / (ranMatrix.max() - ranMatrix.min())
+print("\nMa trận sau khi chuẩn hóa:\n", ranMatrix_norm)
+
+# Tạo một kiểu dữ liệu tùy chỉnh cho màu RGBA
+custom_dtype = np.dtype([('R', 'u1'), ('G', 'u1'), ('B', 'u1'), ('A', 'u1')])
+print("\nKiểu dữ liệu tùy chỉnh cho màu RGBA:\n", custom_dtype)
+color_array = np.array([(255, 0, 0, 255), (0, 255, 0, 255), (0, 0, 255, 255)], dtype=custom_dtype)
+print("\nMảng màu RGBA:\n", color_array)
+
+# Tạo hai ma trận ngẫu nhiên và thực hiện phép nhân ma trận
+AA = np.random.randint(0, 100, (5, 3))
+BB = np.random.randint(0, 100, (3, 2))
+CC = AA @ BB
+print("\nMa trận AA:\n", AA)
+print("\nMa trận BB:\n", BB)
+print("\nMa trận CC (AA @ BB):\n", CC)
+
+# Tạo một mảng ngẫu nhiên 10 phần tử và lọc các phần tử lớn hơn 3 và nhỏ hơn 8, sau đó thay đổi chúng thành giá trị âm
+arr3To8 = np.random.randint(0, 20, 10)
+print("\nMảng ngẫu nhiên 10 phần tử:\n", arr3To8)
+mask = (arr3To8 >= 3) & (arr3To8 <= 8)
+print("\nMảng sau khi lọc các phần tử lớn hơn 3 và nhỏ hơn 8:\n", arr3To8[mask])
+arr3To8[mask] = -arr3To8[mask]
+print("\nMảng sau khi thay đổi các phần tử lớn hơn 3 và nhỏ hơn 8 thành giá trị âm:\n", arr3To8)
