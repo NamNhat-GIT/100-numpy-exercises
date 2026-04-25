@@ -1,5 +1,6 @@
 import numpy as np
 
+
 # Tạo một mảng từ 10 đến 49
 arr = np.arange(10, 50)
 print("\nMảng từ 10 đến 49:\n", arr)
@@ -109,3 +110,35 @@ mask = (arr3To8 >= 3) & (arr3To8 <= 8)
 print("\nMảng sau khi lọc các phần tử lớn hơn 3 và nhỏ hơn 8:\n", arr3To8[mask])
 arr3To8[mask] = -arr3To8[mask]
 print("\nMảng sau khi thay đổi các phần tử lớn hơn 3 và nhỏ hơn 8 thành giá trị âm:\n", arr3To8)
+
+# Hàm sum() của Python và NumPy có cách hoạt động khác nhau khi được gọi với hai đối số. 
+# Trong Python, sum() chỉ chấp nhận một iterable và một giá trị khởi tạo tùy chọn, 
+# trong khi NumPy's sum() có thể chấp nhận một mảng và một trục để tính tổng dọc theo đó.
+print(sum(range(5),-1))
+#from numpy import *
+print(sum(range(5),-1))
+
+# Kiểm tra các phép toán trên mảng
+z = np.array([1, 2, 3, 4, 5])
+print(z**z)
+print(2 << z >> 2)
+print(z <- z)
+print(1j*z)
+print(z/1/1)
+#print(z<z>z) #nah
+
+# Tạo một mảng với các giá trị thập phân và làm tròn chúng về số nguyên gần nhất
+roundArr = np.array([-1.7, -0.5, -0.2, 0.5, 1.2, 1.5])
+roundArr_rounded = np.sign(roundArr) * np.ceil(np.abs(roundArr))
+print("\nMảng sau khi làm tròn:\n", roundArr_rounded)
+# np.abs(Z) → lấy giá trị tuyệt đối
+# np.ceil(...) → làm tròn lên (luôn ra xa 0)
+# np.sign(Z) → khôi phục dấu âm/dương
+
+# Tạo hai mảng ngẫu nhiên và tìm các phần tử chung giữa chúng
+aA = np.random.randint(0, 10, 5)
+bB = np.random.randint(0, 10, 5)
+print("\naA:\n", aA)
+print("\nbB:\n", bB)
+print("\nCác phần tử chung giữa aA và bB(cách một):\n", np.intersect1d(aA, bB))
+print("\nCác phần tử chung giữa aA và bB(cách hai):\n", aA[np.isin(aA, bB)])
