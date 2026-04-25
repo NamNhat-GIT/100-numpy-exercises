@@ -142,3 +142,6 @@ print("\naA:\n", aA)
 print("\nbB:\n", bB)
 print("\nCác phần tử chung giữa aA và bB(cách một):\n", np.intersect1d(aA, bB))
 print("\nCác phần tử chung giữa aA và bB(cách hai):\n", aA[np.isin(aA, bB)])
+#np.intersect1d tìm phần tử chung giữa hai mãng
+#np.isin kiểm tra xem phần tử của mãng này có nằm trong mãng kia không, trả về một mảng boolean.
+
