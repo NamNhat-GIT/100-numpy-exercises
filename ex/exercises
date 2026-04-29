@@ -145,3 +145,78 @@ print("\nCác phần tử chung giữa aA và bB(cách hai):\n", aA[np.isin(aA, 
 #np.intersect1d tìm phần tử chung giữa hai mãng
 #np.isin kiểm tra xem phần tử của mãng này có nằm trong mãng kia không, trả về một mảng boolean.
 
+
+#cách bỏ qua cảnh báo
+#Warning.filterwarnings('ignore')
+    
+
+# Lấy dữ liệu về thời gian
+today = np.datetime64('today')  # Lấy ngày hiện tại với độ chính xác đến ngày
+print("\nNgày hôm nay:\n", today)
+print("\nNgày mai:\n", today + np.timedelta64(1, 'D'))
+print("\nNgày hôm qua:\n", today - np.timedelta64(1, 'D'))
+
+year = today.astype('datetime64[Y]')  # Chuyển đổi ngày hiện tại sang năm
+print("\nNăm hiện tại:\n", year.astype('datetime64[D]'))
+print("\nNgày này năm sau:\n", today + np.timedelta64(365, 'D')) #dùng (-) cho năm trước
+
+months = np.arange('2024-01', '2025-01', dtype='datetime64[M]')
+print("\nCác tháng từ 2024-01 đến 2024-12:\n", months)
+
+months1 = np.arange('2024-01', '2025-01', dtype='datetime64[D]')
+print("\nCác ngày từ 2024-01-01 đến 2024-12-31:\n", months1)
+
+AllDay7216 = np.arange('2016-07-01', '2016-08-01', dtype='datetime64[D]')
+print("\nCác ngày từ 2016-07-01 đến 2016-07-31:\n", AllDay7216)
+
+
+#Tính (A + B) * (-A / 2) tại chỗ
+#Dùng copy() để tránh thay đổi A trước khi tính B, vì A sẽ bị thay đổi sau phép cộng với B.
+A = np.array([[2, 4]])
+B = np.array([[6, 8]])
+tmp = A.copy()
+
+A = A + B
+B = tmp / 2
+print("\n(A + B) * (-A / 2):\n", A * B)
+
+#không dùng copy():
+A, B = 6, 4
+
+B = A + B
+A = -A / 2
+print("\n(A + B) * (-A / 2) mà không dùng copy():\n", A * B)
+
+
+Z = np.array([1.5, 2, 3.7, 4, 5.9])
+print("\nMảng Z:\n", Z)
+
+# Tạo một ma trận 5x5 với các giá trị từ 0 đến 4 lặp lại trên mỗi hàng
+matrix5x5 = np.tile(np.arange(5), (5, 1))
+print("\nMa trận 5x5:\n", matrix5x5)
+#np.tile: lặp mảng
+#np.arange(5): mảng được lặp
+#(5, 1): số lần lặp theo chiều dọc và chiều ngang
+Z = np.zeros((5, 5))
+Z += np.arange(5)
+print("\nMa trận Z sau khi cộng với np.arange(5):\n", Z)
+# np.zeros((5, 5)) tạo một ma trận 5x5 với tất cả phần tử là 0.
+# np.zeros((5, 5)) += np.arange(5): NumPy sẽ tự động “mở rộng” mảng [0,1,2,3,4] để phù hợp với ma trận (5,5).
+
+# Tạo một mảng từ một generator
+def generatoy():
+    for i in range(10):
+        yield i
+
+arr = np.fromiter(generatoy(), dtype=int)
+print("\nMảng từ generator:\n", arr)
+
+# Tạo một mảng từ một chuỗi ko bao gồm đầu và cuối
+v = np.linspace(0, 1, 12)[1:-1]
+print("\nMảng v:\n", v)
+
+# Tạo một vector ngẫu nhiên 10 phần tử và sắp xếp nó
+randomvector10 = np.random.randint(0, 10, 10)
+print("\nVector ngẫu nhiên 10 phần tử:\n", randomvector10)
+sorted = np.sort(randomvector10)
+print("\nVector sau khi sắp xếp:\n", sorted)

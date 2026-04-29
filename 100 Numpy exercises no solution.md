@@ -164,42 +164,66 @@ done
 
 #### 31. How to ignore all numpy warnings (not recommended)? (★☆☆)
 
-
+done
 
 #### 32. Is the following expressions true? (★☆☆)
 
 
 ```python
-np.sqrt(-1) == np.emath.sqrt(-1)
+np.sqrt(-1) == np.emath.sqrt(-1).....false
 ```
+done (NOT SURE)
 
 #### 33. How to get the dates of yesterday, today and tomorrow? (★☆☆)
 
-
+done
 
 #### 34. How to get all the dates corresponding to the month of July 2016? (★★☆)
 
-
+done
 
 #### 35. How to compute ((A+B)\*(-A/2)) in place (without copy)? (★★☆)
 
+With copy:
+A = A
+B = B
 
+tmp = A.copy
+
+A = (A + B)
+
+B = -tmp / 2
+
+A = A     *     B
+    /            \
+A này chứa       B này chứa
+(A+B)            (-A_gốc / 2)
+
+without copy:
+A
+B
+
+B = A + B
+A = -A / 2
+
+print A * B
+done
 
 #### 36. Extract the integer part of a random array using 5 different methods (★★☆)
 
-
+done
 
 #### 37. Create a 5x5 matrix with row values ranging from 0 to 4 (★★☆)
 
-
+done
 
 #### 38. Consider a generator function that generates 10 integers and use it to build an array (★☆☆)
 
-
+done
 
 #### 39. Create a vector of size 10 with values ranging from 0 to 1, both excluded (★★☆)
 
-
+done
 
 #### 40. Create a random vector of size 10 and sort it (★★☆)
 
